@@ -2,16 +2,20 @@
 using namespace std;
 
 vector<int> twosum(vector<int> &arr,int target) {
-    unordered_map<int,int> mpp;
+    unordered_map<int,int> mpp;// stores arr  elements and its index
 
     for(int i=0;i<arr.size();i++) {
         int num = arr[i];
+        //If remaining exists then we can say num + remaining = target
         int remaining = target - num;
+        //checking if remaining exists
         if(mpp.find(remaining)!=mpp.end()) {
             return {mpp[remaining],i};
         }
+        //storing num and its index in map
         mpp[num] = i;
     }
+    //If no pair exists
     return {};
 }
 
